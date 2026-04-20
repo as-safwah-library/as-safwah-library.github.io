@@ -205,7 +205,7 @@
         // পোস্ট ও কমেন্ট লজিক
         window.addPost = function() {
             const pass = document.getElementById('adminPass').value;
-            if(pass === "1234") { // আপনার পাসওয়ার্ড এখানে বদলান
+            if(pass === "963.") { // আপনার পাসওয়ার্ড এখানে বদলান
                 const title = document.getElementById('postTitle').value.trim();
                 const content = document.getElementById('postContent').value.trim();
                 if(title && content) { push(ref(db, 'posts'), { title, content, timestamp: Date.now() }); alert("পাবলিশ হয়েছে!"); }
