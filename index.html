@@ -65,45 +65,47 @@
     <section id="portals">
         <h2 class="section-title">৫টি বিশেষ পোর্টাল</h2>
         <div class="portal-grid">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD2mLO_xDu_5RYA_G0zTwUYACDkvESDj1OZwaDq173P5oiNw/viewform?usp=dialog১" target="_blank" style="text-decoration: none; color: inherit;">
-        <div class="portal-card">
-            <i class="fas fa-user-shield"></i>
-            <h3>Access Pass</h3>
-            <p>সদস্য পদের ফরম</p>
-        </div>
-    <a href="আপনার_গুগল_ফর্ম_লিঙ্ক_২" target="_blank" style="text-decoration: none; color: inherit;">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgBqBXli7vsPT4H6Q30QYcUUdwsSO6TG3eOWIXLw74daYN6g/viewform?usp=dialog" target="_blank" style="text-decoration: none; color: inherit;">
-        <div class="portal-card">
-            <i class="fas fa-hand-holding-heart"></i>
-            <h3>Legacy Fund</h3>
-            <p>অনুদান পাঠানোর মাধ্যম</p>
-        </div>
-    </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD2mLO_xDu_5RYA_G0zTwUYACDkvESDj1OZwaDq173P5oiNw/viewform?usp=dialog১" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="portal-card">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Access Pass</h3>
+                    <p>সদস্য পদের ফরম</p>
+                </div>
+            </a>
 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvWjs14iZCq75WGFIX1_FTr7iFG5so3EIP42FqEEhRcOjfbg/viewform?usp=dialog" target="_blank" style="text-decoration: none; color: inherit;">
-        <div class="portal-card">
-            <i class="fas fa-book-open"></i>
-            <h3>Knowledge Quest</h3>
-            <p>বই রিকোয়েস্ট ফরম</p>
-        </div>
-    </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgBqBXli7vsPT4H6Q30QYcUUdwsSO6TG3eOWIXLw74daYN6g/viewform?usp=dialog" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="portal-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Legacy Fund</h3>
+                    <p>অনুদান পাঠানোর মাধ্যম</p>
+                </div>
+            </a>
 
-    <a href="আপনার_গুগল_ফর্ম_লিঙ্ক_৪" target="_blank" style="text-decoration: none; color: inherit;">
-        <div class="portal-card">
-            <i class="fas fa-brain"></i>
-            <h3>Think Tank</h3>
-            <p>গবেষণা দলে যোগদান</p>
-        </div>
-    </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfvWjs14iZCq75WGFIX1_FTr7iFG5so3EIP42FqEEhRcOjfbg/viewform?usp=dialog" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="portal-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Knowledge Quest</h3>
+                    <p>বই রিকোয়েস্ট ফরম</p>
+                </div>
+            </a>
 
-    <a href="আপনার_গুগল_ফর্ম_লিঙ্ক_৫" target="_blank" style="text-decoration: none; color: inherit;">
-        <div class="portal-card">
-            <i class="fas fa-feather"></i>
-            <h3>Script & Soul</h3>
-            <p>লেখক হিসেবে নিবন্ধন</p>
+            <a href="আপনার_গুগল_ফর্ম_লিঙ্ক_৪" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="portal-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Think Tank</h3>
+                    <p>গবেষণা দলে যোগদান</p>
+                </div>
+            </a>
+
+            <a href="আপনার_গুগল_ফর্ম_লিঙ্ক_৫" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="portal-card">
+                    <i class="fas fa-feather"></i>
+                    <h3>Script & Soul</h3>
+                    <p>লেখক হিসেবে নিবন্ধন</p>
+                </div>
+            </a>
         </div>
-    </a>
-</div>
+    </section>
 
     <section id="library">
         <h2 class="section-title">বুক লিস্ট (Library)</h2>
@@ -159,7 +161,6 @@
             return `${h}:${m}${ampm}`;
         }
 
-        // নামাজের সময় ও লোকেশন আপডেট (নির্ভুল মেথডসহ)
         async function loadPrayers() {
             const updateUI = (dataS, dataH) => {
                 const t = dataS.timings;
@@ -192,7 +193,6 @@
             }
         }
 
-        // বইয়ের লিস্ট জেনারেটর
         function loadBooks() {
             const container = document.getElementById('bookList');
             const books = ["আস-সীরাহ আন-নাবাবিয়্যাহ", "আধুনিক বিজ্ঞান ও কুরআন", "মুসলিম স্পেনের ইতিহাস", "ইসলামী অর্থনীতি", "প্রোগ্রামিং হাতেখড়ি", "হাদীসের আলো", "প্যারাডক্সিক্যাল সাজিদ"];
@@ -201,40 +201,35 @@
             }
         }
 
-        // ১. পোস্ট পাবলিশ করার ফাংশন (আপনার পাসওয়ার্ড এখানে থাকবে)
         window.addPost = function() {
             const pass = document.getElementById('adminPass').value;
             const title = document.getElementById('postTitle').value.trim();
             const content = document.getElementById('postContent').value.trim();
 
-            // "1234" এর জায়গায় আপনার নিজের গোপন পাসওয়ার্ডটি কোটেশনের (' ') ভেতরে লিখুন
             if(pass === "1234") { 
                 if(title && content) {
                     push(ref(db, 'posts'), { 
                         title, 
                         content, 
-                        likes: 0, // নতুন পোস্টে শুরুতে ০ লাইক
+                        likes: 0, 
                         timestamp: Date.now() 
                     });
                     document.getElementById('postTitle').value = '';
                     document.getElementById('postContent').value = '';
                     document.getElementById('adminPass').value = '';
-                    alert("পোস্ট সফলভাবে পাবলিশ হয়েছে!");
+                    alert("পোস্ট সফলভাবে পাবলিশ হয়েছে!");
                 } else { alert("শিরোনাম ও বিস্তারিত লিখুন।"); }
-            } else { alert("ভুল পাসওয়ার্ড!"); }
+            } else { alert("ভুল পাসওয়ার্ড!"); }
         };
 
-        // ২. লাইক দেওয়ার ফাংশন (পাসওয়ার্ড লাগবে না, পাঠকরা দিতে পারবে)
         window.likePost = function(postId, currentLikes) {
             const newLikes = (currentLikes || 0) + 1;
             const postRef = ref(db, `posts/${postId}`);
-            // এখানে ডাইনামিক আপডেট কাজ করবে
             import("https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js").then(m => {
                 m.update(postRef, { likes: newLikes });
             });
         };
 
-        // ৩. নির্দিষ্ট পোস্টে কমেন্ট করার ফাংশন
         window.addPostComment = function(postId) {
             const name = prompt("আপনার নাম লিখুন:");
             const text = prompt("আপনার কমেন্ট লিখুন:");
@@ -244,7 +239,6 @@
             }
         };
 
-        // ৪. রিয়েল-টাইম পোস্ট রিড (পাসওয়ার্ড ছাড়াই সবাই দেখতে পাবে)
         onValue(ref(db, 'posts'), (snapshot) => {
             const data = snapshot.val();
             const container = document.getElementById('postsContainer');
@@ -255,7 +249,6 @@
                 const card = document.createElement('div');
                 card.className = 'post-card';
 
-                // কমেন্টগুলো সাজানো
                 let commentHtml = '';
                 if(p.comments) {
                     Object.values(p.comments).forEach(c => {
