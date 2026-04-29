@@ -3,251 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আস সাফওয়াহ ফাউন্ডেশন | মানবতার সেবায় একনিষ্ঠ</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>As-Safwah Grand Portal | লাইভ</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --cream-bg: #f2ede1; 
-            --deep-blue: #1a365d; 
-            --islamic-green: #218c74; 
-            --gold: #b08d57;
-            --white: #ffffff;
-            --text-gray: #4a4a4a;
-        }
-
+        :root { --primary-dark: #001a15; --primary-mid: #00382f; --accent-gold: #d4af37; --white: #ffffff; --glass: rgba(255, 255, 255, 0.05); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--cream-bg); color: var(--deep-blue); font-family: 'Hind Siliguri', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--primary-dark); color: var(--white); font-family: 'Hind Siliguri', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 15px 8%; display: flex; justify-content: space-between; align-items: center; background: rgba(0, 26, 21, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--accent-gold); }
+        .logo { font-family: 'Playfair Display', serif; color: var(--accent-gold); font-size: 24px; font-weight: bold; }
+        section { padding: 60px 8%; }
+        .hero { height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1519791883288-dc8bd696e667?q=80&w=1470') center/cover fixed; margin-top: 60px; }
+        .section-title { text-align: center; margin-bottom: 30px; font-size: 2rem; color: var(--accent-gold); position: relative; padding-bottom: 10px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 2px; background: var(--accent-gold); }
+        
+        /* Prayer Grid */
+        .prayer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: -60px; position: relative; z-index: 10; }
+        .prayer-card { background: var(--primary-mid); padding: 15px; border-radius: 15px; text-align: center; border: 1px solid var(--glass); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .time { font-size: 1.1rem; font-weight: bold; display: block; color: var(--accent-gold); margin-top: 5px; }
 
-        /* --- Top Bar --- */
-        .top-bar { background: var(--deep-blue); color: white; padding: 10px 10%; display: flex; justify-content: space-between; font-size: 14px; }
+        /* Portals */
+        .portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .portal-card { background: var(--glass); padding: 30px; border-radius: 20px; border: 1px solid var(--glass); transition: 0.3s; text-align: center; cursor: pointer; }
+        .portal-card:hover { border-color: var(--accent-gold); transform: translateY(-5px); background: rgba(212, 175, 55, 0.05); }
+        .portal-card i { font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 15px; }
 
-        /* --- Navigation --- */
-        nav { 
-            background: var(--white); padding: 20px 10%; display: flex; justify-content: space-between; 
-            align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
-            border-bottom: 3px solid var(--islamic-green);
-        }
-        .logo { font-size: 28px; font-weight: 800; color: var(--deep-blue); text-decoration: none; }
-        .logo span { color: var(--islamic-green); }
-        .nav-links ul { display: flex; list-style: none; }
-        .nav-links li { margin-left: 25px; }
-        .nav-links a { text-decoration: none; color: var(--deep-blue); font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: var(--islamic-green); }
-        .donate-btn-nav { background: var(--islamic-green); color: white !important; padding: 10px 25px; border-radius: 50px; }
+        /* Library List */
+        .book-list { background: #000c0a; padding: 20px; border-radius: 20px; max-height: 300px; overflow-y: auto; border: 1px solid var(--glass); }
+        .book-item { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; }
 
-        /* --- Hero Section --- */
-        .hero { 
-            height: 85vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-            url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1470') center/cover no-repeat; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 10%;
-        }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
-        .hero p { font-size: 1.3rem; max-width: 800px; margin-bottom: 30px; }
+        /* Admin & Posts */
+        .admin-area { background: var(--glass); padding: 25px; border-radius: 20px; border: 1px solid var(--accent-gold); margin-bottom: 40px; }
+        .post-card { background: var(--primary-mid); padding: 25px; border-radius: 20px; border: 1px solid var(--glass); margin-bottom: 20px; }
+        .post-title { color: var(--accent-gold); font-size: 1.4rem; margin-bottom: 10px; }
+        .see-more-btn { color: var(--accent-gold); cursor: pointer; font-weight: bold; margin-top: 10px; display: inline-block; text-decoration: underline; }
 
-        /* --- Counters --- */
-        .counters { display: flex; justify-content: space-around; background: var(--white); padding: 40px 5%; margin-top: -60px; width: 85%; margin-left: auto; margin-right: auto; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: center; position: relative; z-index: 10; }
-        .counter-box h2 { font-size: 2.5rem; color: var(--islamic-green); }
-        .counter-box p { font-weight: bold; color: var(--text-gray); }
-
-        /* --- General Sections --- */
-        section { padding: 80px 10%; }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-header h2 { font-size: 2.5rem; position: relative; padding-bottom: 15px; margin-bottom: 10px; }
-        .section-header h2::after { content: ''; width: 80px; height: 4px; background: var(--gold); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
-        #today-date { font-weight: bold; color: var(--islamic-green); font-size: 1.1rem; margin-top: 10px; display: block; }
-        #location-text { color: var(--gold); font-size: 0.9rem; margin-top: 5px; }
-
-        /* --- Projects Grid --- */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .project-card { background: var(--white); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; border: 1px solid #eee; }
-        .p-img { height: 200px; background: #f9f9f9; display: flex; justify-content: center; align-items: center; color: #ccc; font-size: 3rem; }
-        .p-content { padding: 25px; }
-        .btn-upcoming { display: block; background: #ddd; color: #777; padding: 12px; text-decoration: none; border-radius: 10px; cursor: not-allowed; font-weight: bold; }
-
-        /* --- Library --- */
-        .library-portal { background: var(--deep-blue); color: white; border-radius: 30px; padding: 50px; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-        .lib-text { flex: 1; min-width: 300px; }
-        .lib-img { flex: 1; min-width: 300px; height: 300px; background: url('https://images.unsplash.com/photo-1519791883288-dc8bd696e667?q=80&w=1470') center/cover; border-radius: 20px; border: 5px solid var(--gold); }
-
-        /* --- Prayer Table --- */
-        .container-prayer { max-width: 650px; margin: auto; background: white; padding: 40px; border-radius: 30px; box-shadow: 0 15px 45px rgba(0,0,0,0.1); border: 2px solid var(--gold); }
-        .prayer-table { width: 100%; border-collapse: collapse; text-align: center; }
-        .prayer-table thead tr { background: var(--deep-blue); }
-        .prayer-table th { color: white; padding: 18px; font-size: 20px; }
-        .prayer-table th:first-child { border-radius: 15px 0 0 0; }
-        .prayer-table th:last-child { border-radius: 0 15px 0 0; }
-        .prayer-table td { padding: 18px; border-bottom: 1px solid #f0f0f0; font-weight: 700; font-size: 19px; }
-        .time-val { color: var(--islamic-green); font-family: 'Playfair Display', serif; }
-        .asr-box { font-size: 14px; color: #666; display: block; margin-top: 5px; font-weight: 500; }
-
-        /* --- Discussion --- */
-        .discussion-container { max-width: 800px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 25px; border-top: 8px solid var(--islamic-green); }
-        .discussion-input { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #ddd; }
-
-        /* --- Footer --- */
-        footer { background: #111; color: #ccc; padding: 60px 10% 20px; text-align: center; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--glass); background: var(--primary-dark); color: white; outline: none; }
+        .master-btn { background: var(--accent-gold); color: black; padding: 12px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        .comment-card { background: var(--glass); padding: 15px; border-radius: 12px; margin-bottom: 10px; border-left: 4px solid var(--accent-gold); }
+        footer { text-align: center; padding: 30px; border-top: 1px solid var(--glass); font-size: 13px; color: #666; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div><i class="fas fa-envelope"></i> | <i class="fas fa-phone"></i> যোগাযোগ শীঘ্রই</div>
-        <div><i class="fab fa-facebook"></i> <i class="fab fa-youtube"></i> <i class="fab fa-twitter"></i></div>
-    </div>
+    <nav><div class="logo">AS-SAFWAH</div><div id="today-date" style="color: var(--accent-gold);"></div></nav>
 
-    <nav>
-        <a href="#" class="logo">AS-SAFWAH <span>FOUNDATION</span></a>
-        <div class="nav-links">
-            <ul>
-                <li><a href="#">মূলপাতা</a></li>
-                <li><a href="#projects">প্রকল্পসমূহ</a></li>
-                <li><a href="#library">লাইব্রেরি</a></li>
-                <li><a href="#dawah-media">দাওয়াহ মিডিয়া</a></li>
-                <li><a href="#prayer-time">সালাতের সময়</a></li>
-                <li><a href="#" class="donate-btn-nav">দান করুন</a></li>
-            </ul>
-        </div>
-    </nav>
+    <section class="hero"><h1>আস-সাফওয়াহ গ্র্যান্ড পোর্টাল</h1><p>জ্ঞানের সন্ধানে, এক আধুনিক উম্মাহর পথচলা</p></section>
 
-    <div class="hero">
-        <h1>মানবতার কল্যাণে আমরা</h1>
-        <p>আস-সাফওয়াহ ফাউন্ডেশন ইসলামের সঠিক জ্ঞান প্রচার এবং আর্তমানবতার সেবায় কাজ করে।</p>
-        <a href="#projects" style="background:var(--islamic-green); padding:15px 40px; color:white; border-radius:50px; text-decoration:none; font-weight:bold;">কার্যক্রম দেখুন</a>
-    </div>
-
-    <div class="counters">
-        <div class="counter-box"><h2>০</h2><p>চলমান প্রকল্প</p></div>
-        <div class="counter-box"><h2>০</h2><p>স্বেচ্ছাসেবী</p></div>
-        <div class="counter-box"><h2>০</h2><p>উপকারভোগী</p></div>
-    </div>
-
-    <section id="projects">
-        <div class="section-header">
-            <h2>প্রকল্পসমূহ</h2>
-            <p>আমাদের কাজ খুব শীঘ্রই শুরু হবে ইনশাআল্লাহ</p>
-        </div>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="p-img"><i class="fas fa-tools"></i></div>
-                <div class="p-content">
-                    <h3>আসন্ন প্রকল্প</h3>
-                    <p>ফাউন্ডেশনের নতুন কার্যক্রমের বিস্তারিত খুব শীঘ্রই এখানে আপডেট করা হবে।</p>
-                    <a href="#" class="btn-upcoming">শীঘ্রই আসছে</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="p-img"><i class="fas fa-tools"></i></div>
-                <div class="p-content">
-                    <h3>আসন্ন প্রকল্প</h3>
-                    <p>ফাউন্ডেশনের নতুন কার্যক্রমের বিস্তারিত খুব শীঘ্রই এখানে আপডেট করা হবে।</p>
-                    <a href="#" class="btn-upcoming">শীঘ্রই আসছে</a>
-                </div>
-            </div>
+    <section style="padding-top: 0;">
+        <div class="prayer-grid">
+            <div class="prayer-card"><p>ফজর</p><span class="time" id="fajr">--:--</span></div>
+            <div class="prayer-card"><p>যোহর</p><span class="time" id="dhuhr">--:--</span></div>
+            <div class="prayer-card"><p>আসর</p><span id="asr-shafii" style="display:block; font-size:0.85rem; color:var(--accent-gold);">শাফেয়ী: --:--</span><span id="asr-hanafi" style="display:block; font-size:0.85rem; color:var(--accent-gold);">হানাফী: --:--</span></div>
+            <div class="prayer-card"><p>মাগরিব</p><span class="time" id="maghrib">--:--</span></div>
+            <div class="prayer-card"><p>এশা</p><span class="time" id="isha">--:--</span></div>
         </div>
     </section>
+
+    <section id="portals">
+        <h2 class="section-title">৫টি বিশেষ পোর্টাল</h2>
+        <div class="portal-grid">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfD2mLO_xDu_5RYA_G0zTwUYACDkvESDj1OZwaDq173P5oiNw/viewform?usp=dialog১" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="portal-card">
+            <i class="fas fa-user-shield"></i>
+            <h3>Access Pass</h3>
+            <p>সদস্য পদের ফরম</p>
+        </div>
+    </a>
+
+    <a href="আপনার_গুগল_ফর্ম_লিঙ্ক_২" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="portal-card">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h3>Legacy Fund</h3>
+            <p>অনুদান পাঠানোর মাধ্যম</p>
+        </div>
+    </a>
+
+    <a href="আপনার_গুগল_ফর্ম_লিঙ্ক_৩" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="portal-card">
+            <i class="fas fa-book-open"></i>
+            <h3>Knowledge Quest</h3>
+            <p>বই রিকোয়েস্ট ফরম</p>
+        </div>
+    </a>
+
+    <a href="আপনার_গুগল_ফর্ম_লিঙ্ক_৪" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="portal-card">
+            <i class="fas fa-brain"></i>
+            <h3>Think Tank</h3>
+            <p>গবেষণা দলে যোগদান</p>
+        </div>
+    </a>
+
+    <a href="আপনার_গুগল_ফর্ম_লিঙ্ক_৫" target="_blank" style="text-decoration: none; color: inherit;">
+        <div class="portal-card">
+            <i class="fas fa-feather"></i>
+            <h3>Script & Soul</h3>
+            <p>লেখক হিসেবে নিবন্ধন</p>
+        </div>
+    </a>
+</div>
 
     <section id="library">
-        <div class="library-portal">
-            <div class="lib-text">
-                <h2 style="font-size: 2.2rem; margin-bottom: 20px;">আস সাফওয়াহ লাইব্রেরি</h2>
-                <p style="margin-bottom: 25px; opacity: 0.9;">
-                    সাফওয়াহ প্রকাশনীর বইগুলো লেখকের অনুমতি সাপেক্ষে পিডিএফ ভার্সনে পাওয়া যাবে। সরাসরি বই সংগ্রহের জন্য আবেদন করতে নিচের বাটনে ক্লিক করুন।
-                </p>
-                <a href="https://as-safwah-library.github.io/" target="_blank" style="background:var(--gold); padding:15px 35px; color:white; text-decoration:none; border-radius:50px; font-weight:bold; display:inline-block;">
-                    লাইব্রেরি পোর্টাল দেখুন <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="lib-img"></div>
+        <h2 class="section-title">বুক লিস্ট (Library)</h2>
+        <div class="book-list" id="bookList"></div>
+    </section>
+
+    <section>
+        <div class="admin-area">
+            <h2 style="color: var(--accent-gold); margin-bottom: 15px; font-size: 1.2rem;"><i class="fas fa-edit"></i> অ্যাডমিন প্যানেল</h2>
+            <input type="password" id="adminPass" placeholder="গোপন কোড দিন...">
+            <input type="text" id="postTitle" placeholder="পোস্টের শিরোনাম...">
+            <textarea id="postContent" rows="3" placeholder="বিস্তারিত লিখুন..."></textarea>
+            <button class="master-btn" onclick="addPost()">পাবলিশ করুন</button>
+        </div>
+        <h2 class="section-title">আর্টিকেল ও সামাজিক সচেতনতা</h2>
+        <div id="postsContainer"></div>
+    </section>
+
+    <section id="community">
+        <h2 class="section-title">জিজ্ঞাসা ও আলোচনা</h2>
+        <div class="comment-area">
+            <input type="text" id="userName" placeholder="নাম...">
+            <textarea id="userText" rows="3" placeholder="আপনার মন্তব্য..."></textarea>
+            <button class="master-btn" onclick="addComment()">পোস্ট করুন</button>
+            <div id="commentContainer" style="margin-top:20px;"></div>
         </div>
     </section>
 
-    <section id="dawah-media" style="background: #fff;">
-        <div class="section-header">
-            <h2>দাওয়াহ মিডিয়া</h2>
-            <p>কুরআন ও সুন্নাহর সঠিক জ্ঞান ছড়িয়ে দেওয়ার প্রচেষ্টা</p>
-        </div>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="p-img" style="background: #000;"><i class="fab fa-youtube" style="color: red; font-size: 4rem;"></i></div>
-                <div class="p-content">
-                    <h3>ইসলামিক আলোচনা</h3>
-                    <p>ইউটিউব চ্যানেলের গুরুত্বপূর্ণ ভিডিওগুলো এখানে যুক্ত হবে ইনশাআল্লাহ।</p>
-                    <a href="#" style="color: var(--islamic-green); font-weight: bold; text-decoration: none;">ভিডিও দেখুন <i class="fas fa-play-circle"></i></a>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="p-img" style="background: #000;"><i class="fab fa-youtube" style="color: red; font-size: 4rem;"></i></div>
-                <div class="p-content">
-                    <h3>দাওয়াহ ক্লিপ</h3>
-                    <p>ছোট ছোট দাওয়াহ ভিডিওগুলো সরাসরি এখান থেকে দেখতে পাবেন।</p>
-                    <a href="#" style="color: var(--islamic-green); font-weight: bold; text-decoration: none;">ভিডিও দেখুন <i class="fas fa-play-circle"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <footer><p>&copy; ২০২৬ আস-সাফওয়াহ গ্র্যান্ড লাইব্রেরি</p></footer>
 
-    <section id="prayer-time">
-        <div class="section-header">
-            <h2>সালাতের সময়সূচি</h2>
-            <span id="today-date">আজকের তারিখ লোড হচ্ছে...</span>
-            <p id="location-text">আপনার অবস্থান শনাক্ত করা হচ্ছে...</p>
-        </div>
-        
-        <div class="container-prayer">
-            <table class="prayer-table">
-                <thead>
-                    <tr>
-                        <th>সালাত</th>
-                        <th>শুরু</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>ফজর</td><td id="fajr" class="time-val">--:-- AM</td></tr>
-                    <tr><td>যোহর</td><td id="dhuhr" class="time-val">--:-- PM</td></tr>
-                    <tr>
-                        <td>আসর</td>
-                        <td class="time-val">
-                            <span id="asr-shafii" class="asr-box">শাফেয়ী: --:-- PM</span>
-                            <span id="asr-hanafi" class="asr-box">হানাফী: --:-- PM</span>
-                        </td>
-                    </tr>
-                    <tr><td>মাগরিব</td><td id="maghrib" class="time-val">--:-- PM</td></tr>
-                    <tr><td>এশা</td><td id="isha" class="time-val">--:-- PM</td></tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    <section id="discussion">
-        <div class="section-header"><h2>জিজ্ঞাসা ও মতামত</h2></div>
-        <div class="discussion-container">
-            <input type="text" id="userName" class="discussion-input" placeholder="আপনার নাম লিখুন">
-            <textarea id="commentInput" class="discussion-input" style="height:100px;" placeholder="আপনার মতামত বা প্রশ্ন লিখুন..."></textarea>
-            <button onclick="addComment()" style="width:100%; padding:15px; background:var(--islamic-green); color:white; border:none; border-radius:10px; cursor:pointer; font-weight:bold;">সাবমিট করুন</button>
-            <div id="commentList" style="margin-top: 30px;"></div>
-        </div>
-    </section>
+        const firebaseConfig = {
+            apiKey: "AIzaSyB0RDlPnWCB8WMhLW-VTyQM6qsCECHur5E",
+            authDomain: "as-safwah-portal.firebaseapp.com",
+            projectId: "as-safwah-portal",
+            storageBucket: "as-safwah-portal.firebasestorage.app",
+            messagingSenderId: "146758609598",
+            appId: "1:146758609598:web:c383d5c983bca2a6a94cef",
+            databaseURL: "https://as-safwah-portal-default-rtdb.asia-southeast1.firebasedatabase.app"
+        };
 
-    <footer>
-        <p>&copy; ২০২৬ আস সাফওয়াহ ফাউন্ডেশন | আইটি বিভাগ</p>
-    </footer>
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
-    <script>
-        function format12h(time) {
-            if(!time) return "--:--";
-            let [hours, minutes] = time.split(':');
-            hours = parseInt(hours);
-            let ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12 || 12;
-            return `${hours.toString().padStart(2, '0')}:${minutes} ${ampm}`;
+        function format12h(timeStr) {
+            if(!timeStr) return "--:--";
+            let [h, m] = timeStr.split(':');
+            let ampm = h >= 12 ? ' PM' : ' AM';
+            h = h % 12 || 12;
+            return `${h}:${m}${ampm}`;
         }
 
+        // নামাজের সময় ও লোকেশন আপডেট (নির্ভুল মেথডসহ)
         async function loadPrayers() {
-            const locText = document.getElementById('location-text');
-            const dateSpan = document.getElementById('today-date');
-            
             const updateUI = (dataS, dataH) => {
                 const t = dataS.timings;
                 document.getElementById('fajr').innerText = format12h(t.Fajr);
@@ -256,53 +170,70 @@
                 document.getElementById('asr-hanafi').innerText = "হানাফী: " + format12h(dataH.timings.Asr);
                 document.getElementById('maghrib').innerText = format12h(t.Maghrib);
                 document.getElementById('isha').innerText = format12h(t.Isha);
-                dateSpan.innerText = "আজকের তারিখ: " + dataS.date.readable;
+                document.getElementById('today-date').innerText = "আজ: " + dataS.date.readable;
             };
 
-            async function loadDefault() {
-                try {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(async (pos) => {
+                    const lat = pos.coords.latitude, lon = pos.coords.longitude;
+                    const [resS, resH] = await Promise.all([
+                        fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=1`),
+                        fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=1&school=1`)
+                    ]);
+                    const dS = await resS.json(), dH = await resH.json();
+                    updateUI(dS.data, dH.data);
+                }, async () => {
                     const [resS, resH] = await Promise.all([
                         fetch(`https://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=1`),
                         fetch(`https://api.aladhan.com/v1/timingsByCity?city=Dhaka&country=Bangladesh&method=1&school=1`)
                     ]);
                     const dS = await resS.json(), dH = await resH.json();
                     updateUI(dS.data, dH.data);
-                    locText.innerText = "ঢাকা, বাংলাদেশ (ডিফল্ট সময়)";
-                } catch (e) { console.error(e); }
-            }
-
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(async (pos) => {
-                    const lat = pos.coords.latitude, lon = pos.coords.longitude;
-                    try {
-                        const [resS, resH] = await Promise.all([
-                            fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=1`),
-                            fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=1&school=1`)
-                        ]);
-                        const dS = await resS.json(), dH = await resH.json();
-                        updateUI(dS.data, dH.data);
-                        locText.innerText = "আপনার এলাকার সঠিক সময় দেখানো হচ্ছে";
-                    } catch (e) { loadDefault(); }
-                }, loadDefault);
-            } else {
-                loadDefault();
+                });
             }
         }
 
-        function addComment() {
-            const name = document.getElementById('userName').value;
-            const text = document.getElementById('commentInput').value;
-            if(name && text) {
-                const list = document.getElementById('commentList');
-                const div = document.createElement('div');
-                div.innerHTML = `<div style="background:#f9f9f9; padding:15px; border-radius:10px; margin-bottom:10px; border-left:4px solid var(--gold); text-align:left;"><strong>${name}</strong>: ${text}</div>`;
-                list.prepend(div);
-                document.getElementById('userName').value = '';
-                document.getElementById('commentInput').value = '';
+        // বইয়ের লিস্ট জেনারেটর
+        function loadBooks() {
+            const container = document.getElementById('bookList');
+            const books = ["আস-সীরাহ আন-নাবাবিয়্যাহ", "আধুনিক বিজ্ঞান ও কুরআন", "মুসলিম স্পেনের ইতিহাস", "ইসলামী অর্থনীতি", "প্রোগ্রামিং হাতেখড়ি", "হাদীসের আলো", "প্যারাডক্সিক্যাল সাজিদ"];
+            for(let i=0; i<15; i++) {
+                container.innerHTML += `<div class="book-item"><span><i class="fas fa-book" style="margin-right:10px;"></i> ${books[i % books.length]}</span><span style="color:var(--accent-gold); font-size:12px;">সংগ্রহে আছে</span></div>`;
             }
         }
 
-        window.onload = loadPrayers;
+        // পোস্ট ও কমেন্ট লজিক
+        window.addPost = function() {
+            const pass = document.getElementById('adminPass').value;
+            if(pass === "963.") { // আপনার পাসওয়ার্ড এখানে বদলান
+                const title = document.getElementById('postTitle').value.trim();
+                const content = document.getElementById('postContent').value.trim();
+                if(title && content) { push(ref(db, 'posts'), { title, content, timestamp: Date.now() }); alert("পাবলিশ হয়েছে!"); }
+            } else alert("ভুল কোড!");
+        };
+
+        window.addComment = function() {
+            const name = document.getElementById('userName').value.trim(), text = document.getElementById('userText').value.trim();
+            if(name && text) push(ref(db, 'chats'), { name, text, timestamp: Date.now() });
+        };
+
+        onValue(ref(db, 'posts'), s => {
+            const d = s.val(), c = document.getElementById('postsContainer'); c.innerHTML = '';
+            if(d) Object.entries(d).reverse().forEach(([id, p]) => {
+                let isL = p.content.length > 200, txt = isL ? p.content.substring(0, 200) + "..." : p.content;
+                c.innerHTML += `<div class="post-card"><h3 class="post-title">${p.title}</h3><p>${txt}</p>${isL ? `<span class="see-more-btn" onclick="this.previousElementSibling.innerText=\`${p.content.replace(/`/g, "'")}\`; this.remove();">See More</span>` : ''}</div>`;
+            });
+        });
+
+        onValue(ref(db, 'chats'), s => {
+            const d = s.val(), c = document.getElementById('commentContainer'); c.innerHTML = '';
+            if(d) Object.entries(d).reverse().forEach(([id, m]) => {
+                let isL = m.text.length > 100, txt = isL ? m.text.substring(0, 100) + "..." : m.text;
+                c.innerHTML += `<div class="comment-card"><strong>${m.name}</strong><p>${txt}</p>${isL ? `<span class="see-more-btn" onclick="this.previousElementSibling.innerText=\`${m.text.replace(/`/g, "'")}\`; this.remove();">See More</span>` : ''}</div>`;
+            });
+        });
+
+        window.onload = () => { loadPrayers(); loadBooks(); };
     </script>
 </body>
 </html>
